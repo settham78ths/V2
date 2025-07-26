@@ -388,37 +388,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 showError('Failed to load CV versions for comparison.');
             });
-        console.log('Option input changed:', input.value);
-        });
-    }
-
-    // Initialize service worker for PWA
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js')
-                .then(function(registration) {
-                    console.log('ServiceWorker registration successful');
-                })
-                .catch(function(error) {
-                    console.log('ServiceWorker registration failed: ', error);
-                });
-        });
-    }
-
-    // Get buttons safely to avoid undefined errors
-    const analyzeUrlBtn = document.getElementById('analyze-url-btn');
-    const analyzeJobBtn = document.getElementById('analyze-job-btn');
-    
-    // Add event listeners only if buttons exist
-    if (analyzeUrlBtn) {
-        analyzeUrlBtn.addEventListener('click', function() {
-            console.log('Analyze URL button clicked');
-        });
-    }
-    
-    if (analyzeJobBtn) {
-        analyzeJobBtn.addEventListener('click', function() {
-            console.log('Analyze Job button clicked');
         });
     }
 
