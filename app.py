@@ -60,13 +60,13 @@ app.config.update(
 # Database configuration
 database_url = os.environ.get('DATABASE_URL')
 if not database_url:
-    # Fallback to SQLite for development
-    database_url = 'sqlite:///cv_optimizer.db'
-    logger.warning("Using SQLite database for development")
+    raise Exception("DATABASE_URL environment variable is required. Please set up PostgreSQL database in Replit.")
 
 # Fix for PostgreSQL URL compatibility
 if database_url.startswith('postgres://'):
     database_url = database_url.replace('postgres://', 'postgresql://', 1)
+
+logger.info(f"Connecting to PostgreSQL database")
 
 app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
