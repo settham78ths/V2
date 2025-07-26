@@ -133,4 +133,27 @@ def parse_ai_json_response(ai_result):
         clean_result = ai_result
         if '```json' in clean_result:
             json_start = clean_result.find('```json') + 7
-            json_end = clean_result.find('}')
+            json_end = clean_result.find('```', json_start)
+            if json_end == -1:
+                json_end = len(clean_result)
+            clean_result = clean_result[json_start:json_end].strip()
+        
+        # Try to parse the JSON
+        parsed_data = json.loads(clean_result)
+        return parsed_data
+    
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON parsing error: {e}")
+        # Return a default structure if JSON parsing fails
+        return {
+            "content": ai_result,
+            "status": "error",
+            "message": "Failed to parse AI response"
+        }
+    except Exception as e:
+        logger.error(f"Unexpected error in parse_ai_json_response: {e}")
+        return {
+            "content": ai_result,
+            "status": "error", 
+            "message": "Unexpected error occurred"
+        }
