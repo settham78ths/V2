@@ -391,6 +391,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Get buttons that were causing errors
+    const analyzeUrlBtn = document.getElementById('analyze-url-btn');
+    const analyzeJobBtn = document.getElementById('analyze-job-btn');
+
     // Listen for option changes (just in case we need to add functionality in future)
     if (optionInputs && optionInputs.length > 0) {
         optionInputs.forEach(input => {
