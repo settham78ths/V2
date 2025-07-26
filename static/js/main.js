@@ -527,52 +527,44 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Analyze job posting button
+    const analyzeJobBtn = document.getElementById('analyze-job-btn');
     if (analyzeJobBtn) {
         analyzeJobBtn.addEventListener('click', async function() {
             const jobDescription = document.getElementById('job-description').value;
 
-            // Validate if job description is not empty
-            if (!jobDescription) {
-                showError('Please enter a Job Description to analyze.');
+            if (!jobDescription.trim()) {
+                alert('Wprowadź opis stanowiska do analizy');
                 return;
             }
 
-            // Disable the button and show loading indicator
-            analyzeJobBtn.disabled = true;
-            analyzeJobBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Analyzing...';
-
             try {
-                // Send request to analyze the job description
-                const response = await fetch('/extract-requirements', {
+                const response = await fetch('/analyze-job-posting', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ job_description: jobDescription })
+                    body: JSON.stringify({
+                        job_description: jobDescription,
+                        language: 'pl'
+                    })
                 });
 
-                const data = await response.json();
+                const result = await response.json();
 
-                if (data.success) {
-                    // Format and display the key requirements
-                    let requirementsHTML = '<h4>Key Requirements:</h4><ul>';
-                    data.requirements.forEach(req => {
-                        requirementsHTML += `<li>${req}</li>`;
-                    });
-                    requirementsHTML += '</ul>';
-
-                    showStatus(requirementsHTML, 'info');
+                if (result.success) {
+                    console.log('Job analysis result:', result.analysis);
+                    // Display analysis results
+                    displayJobAnalysis(result.analysis);
                 } else {
-                    showError(data.message || 'Failed to extract job requirements.');
+                    alert('Błąd analizy: ' + result.message);
                 }
             } catch (error) {
-                console.error('Error:', error);
-                showError('An unexpected error occurred. Please try again.');
-            } finally {
-                // Re-enable the button and reset the text
-                analyzeJobBtn.disabled = false;
-                analyzeJobBtn.innerHTML = '<i class="fas fa-search me-1"></i> Analyze Job Description';
+                console.error('Error analyzing job:', error);
+                alert('Wystąpił błąd podczas analizy stanowiska');
             }
         });
     }
+
+    // CV processing form
+    const processForm = document.getElementById('process-form');
 });
