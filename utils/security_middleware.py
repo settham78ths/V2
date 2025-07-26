@@ -4,10 +4,6 @@ import logging
 from datetime import datetime
 import json
 
-import logging
-from datetime import datetime
-from flask import request, g
-
 class SecurityMiddleware:
     def __init__(self, app=None):
         self.app = app

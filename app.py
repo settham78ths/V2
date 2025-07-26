@@ -134,3 +134,23 @@ def parse_ai_json_response(ai_result):
         if '```json' in clean_result:
             json_start = clean_result.find('```json') + 7
             json_end = clean_result.find('```', json_start)
+            if json_end > json_start:
+                clean_result = clean_result[json_start:json_end].strip()
+        
+        # Try to parse as JSON
+        result = json.loads(clean_result)
+        return result
+        
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON parsing error: {e}")
+        # Return a fallback structure
+        return {
+            "analysis": clean_result,
+            "error": "Could not parse AI response as JSON"
+        }
+    except Exception as e:
+        logger.error(f"General parsing error: {e}")
+        return {
+            "analysis": str(ai_result),
+            "error": str(e)
+        }

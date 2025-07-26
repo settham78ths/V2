@@ -1,8 +1,5 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Get button elements safely
-    const analyzeUrlBtn = document.getElementById('analyzeUrlBtn');
-    const analyzeJobBtn = document.getElementById('analyzeJobBtn');
     // Form elements
     const cvUploadForm = document.getElementById('cv-upload-form');
     const cvFileInput = document.getElementById('cv-file');
@@ -138,9 +135,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedLanguageElement = document.querySelector('input[name="language"]:checked');
             const selectedLanguage = selectedLanguageElement ? selectedLanguageElement.value : 'pl';
 
-            // Fix undefined variables - add these elements if they exist
-            //const analyzeUrlBtn = document.getElementById('analyze-url-btn');
-            //const analyzeJobBtn = document.getElementById('analyze-job-btn');
+            // Get button elements safely
+            const analyzeUrlBtn = document.getElementById('analyze-url-btn') || document.getElementById('analyzeUrlBtn');
+            const analyzeJobBtn = document.getElementById('analyze-job-btn') || document.getElementById('analyzeJobBtn');
 
             // Add event listeners if elements exist
             if (analyzeUrlBtn) {
