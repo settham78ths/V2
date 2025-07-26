@@ -1,5 +1,8 @@
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Get button elements safely
+    const analyzeUrlBtn = document.getElementById('analyzeUrlBtn');
+    const analyzeJobBtn = document.getElementById('analyzeJobBtn');
     // Form elements
     const cvUploadForm = document.getElementById('cv-upload-form');
     const cvFileInput = document.getElementById('cv-file');
@@ -136,9 +139,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedLanguage = selectedLanguageElement ? selectedLanguageElement.value : 'pl';
 
             // Fix undefined variables - add these elements if they exist
-            const analyzeUrlBtn = document.getElementById('analyze-url-btn');
-            const analyzeJobBtn = document.getElementById('analyze-job-btn');
-            
+            //const analyzeUrlBtn = document.getElementById('analyze-url-btn');
+            //const analyzeJobBtn = document.getElementById('analyze-job-btn');
+
             // Add event listeners if elements exist
             if (analyzeUrlBtn) {
                 analyzeUrlBtn.addEventListener('click', function() {
@@ -150,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             }
-            
+
             if (analyzeJobBtn) {
                 analyzeJobBtn.addEventListener('click', function() {
                     const jobDescValue = jobDescriptionInput ? jobDescriptionInput.value.trim() : '';

@@ -133,4 +133,4 @@ def parse_ai_json_response(ai_result):
         clean_result = ai_result
         if '```json' in clean_result:
             json_start = clean_result.find('```json') + 7
-            json_end = clean_result.find('
+            json_end = clean_result.find('```', json_start)
