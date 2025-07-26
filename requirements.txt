@@ -20,3 +20,4 @@ requests
 stripe
 trafilatura
 wtforms
+python-dotenv
