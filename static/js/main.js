@@ -135,33 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedLanguageElement = document.querySelector('input[name="language"]:checked');
             const selectedLanguage = selectedLanguageElement ? selectedLanguageElement.value : 'pl';
 
-            // Get button elements safely
-            const analyzeUrlBtn = document.getElementById('analyze-url-btn') || document.getElementById('analyzeUrlBtn');
-            const analyzeJobBtn = document.getElementById('analyze-job-btn') || document.getElementById('analyzeJobBtn');
-
-            // Add event listeners if elements exist
-            if (analyzeUrlBtn) {
-                analyzeUrlBtn.addEventListener('click', function() {
-                    const jobUrlValue = jobUrlInput ? jobUrlInput.value.trim() : '';
-                    if (jobUrlValue) {
-                        analyzeJobPosting(jobUrlValue);
-                    } else {
-                        showError('Please enter a job URL first.');
-                    }
-                });
-            }
-
-            if (analyzeJobBtn) {
-                analyzeJobBtn.addEventListener('click', function() {
-                    const jobDescValue = jobDescriptionInput ? jobDescriptionInput.value.trim() : '';
-                    if (jobDescValue) {
-                        analyzeJobPosting('', jobDescValue);
-                    } else {
-                        showError('Please enter a job description first.');
-                    }
-                });
-            }
-
             // Enhanced job description analysis for better CV optimization
             if (jobDescription && jobDescription.length > 100 && 
                 (selectedOption === 'optimize' || selectedOption === 'position_optimization' || selectedOption === 'advanced_position_optimization')) {
