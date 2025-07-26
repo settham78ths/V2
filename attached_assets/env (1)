@@ -6,7 +6,7 @@ FLASK_ENV=development
 FLASK_DEBUG=True
 
 # OpenRouter AI API (for CV analysis)
-OPENROUTER_API_KEY=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
+OPENROUTER_API_KEY=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
 
 # Stripe Payment Configuration
 VITE_STRIPE_PUBLIC_KEY=pk_test_51RRecSQWOMhxjQrpADlBWlqmgLmLbp7dsSigLijG1Vmr5BbmErqcpbJhfEMfc9hh7nINu51mQfQRcBsdMES5u9cg00sPaLwry4
