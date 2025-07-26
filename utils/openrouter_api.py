@@ -8,6 +8,13 @@ from bs4 import BeautifulSoup
 logger = logging.getLogger(__name__)
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
+
+# Debug logging for API key
+if OPENROUTER_API_KEY:
+    logger.debug(f"OpenRouter API key loaded successfully (length: {len(OPENROUTER_API_KEY)})")
+else:
+    logger.error("OpenRouter API key is empty or not found in environment variables")
+
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = "qwen/qwen-2.5-72b-instruct:free"
 

@@ -480,7 +480,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // CV URL analysis
+    // CV URL analysis - sprawdź czy element istnieje
+    const analyzeUrlBtn = document.getElementById('analyze-url-btn');
     if (analyzeUrlBtn) {
         analyzeUrlBtn.addEventListener('click', async function() {
             const jobUrl = document.getElementById('job-url').value;

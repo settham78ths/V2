@@ -1,6 +1,11 @@
 import os
 import logging
 from tempfile import mkdtemp
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 from datetime import datetime, timedelta
 from flask import Flask, render_template, request, jsonify, session, flash, redirect, url_for
 from werkzeug.utils import secure_filename
