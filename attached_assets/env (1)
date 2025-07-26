@@ -49,8 +49,9 @@ PWA_CACHE_VERSION=v1.2.0
 PWA_CACHE_NAME=cv-optimizer-pro-cache
 PWA_OFFLINE_FALLBACK=/offline
 
-# API Rate Limiting
 API_RATE_LIMIT=100
+# API Rate Limiting
+
 API_RATE_LIMIT_WINDOW=3600
 
 # File Upload Configuration
@@ -65,3 +66,5 @@ LOG_FILE=app.log
 # Development Tools
 FLASK_PROFILER_ENABLED=False
 DEBUG_TOOLBAR_ENABLED=False
+
+ENCRYPTION_KEY=1pZmjEsSzT3Gf2BRZD3oTM2VvCpfxsp1fJ2C1kYmmOM=
